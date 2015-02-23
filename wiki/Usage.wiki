@@ -69,3 +69,9 @@ public static final ** CREATOR;
 }
 
 }}}
+
+= iOS =
+1)Add ios.add_libs=SystemConfiguration.framework;Security.framework
+build hint to your project
+
+
