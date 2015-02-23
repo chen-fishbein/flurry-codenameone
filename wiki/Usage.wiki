@@ -14,12 +14,12 @@ Sample code:
 
 When you need to track events use:
 {{{
-        //regular events<br>
+        //regular events
         manager.logEvent(event_id);
         
-        //true if this is a timed event<br>
+        //true if this is a timed event
         manager.logEvent(event_id, true);
-        //end the timed event<br>
+        //end the timed event
         manager.endTimedEvent(event_id);
 }}}
 = Integration =
