@@ -20,3 +20,49 @@ When you need to track events use:
         manager.logEvent(event_id, true);
         //end the timed event<br>
         manager.endTimedEvent(event_id);
+
+= Integration =
+1)Build the project 
+2)Place the CN1Flurry.cn1lib file in your CN1 project lib. 
+3)Right click on your CN1 project and select "Refresh Libs" then clean build your project.
+
+= Android =
+1)Include google play sefices - add android.includeGPlayServices=true build hint to your project.
+2)Include v4 support library - add android.supportV4=true build hint to your project.
+3)Disable proguard or mark relevant classes with the keep hints
+
+android.enableProguard=false
+ 
+or 
+
+android.proguardKeep=keep
+class com.flurry.** { *; }
+dontwarn
+com.flurry.**
+keepattributes
+*Annotation*,EnclosingMethod
+keepclasseswithmembers
+class * {
+public <init>(android.content.Context, android.util.AttributeSet, int);
+}
+keep
+class * extends java.util.ListResourceBundle {
+protected Object[][] getContents();
+}
+keep
+public class
+com.google.android.gms.common.internal.safeparcel.SafeParcelable {
+public static final *** NULL;
+}
+keepnames
+@com.google.android.gms.common.annotation.KeepName class *
+keepclassmembernames
+class * {
+@com.google.android.gms.common.annotation.KeepName *;
+}
+keepnames
+class * implements android.os.Parcelable {
+public static final ** CREATOR;
+}
+
+
