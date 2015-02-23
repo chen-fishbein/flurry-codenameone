@@ -1,7 +1,7 @@
 = Usage =
 
 Sample code:
-
+{{{
         //init the Flurry Manager
         FlurryManager manager = new FlurryManager();
         manager.setCrashReportingEnabled(true);
@@ -10,9 +10,10 @@ Sample code:
         }else{
             manager.init(ios_api_key);        
         }
-
+}}}
 
 When you need to track events use:
+{{{
         //regular events<br>
         manager.logEvent(event_id);
         
@@ -20,7 +21,7 @@ When you need to track events use:
         manager.logEvent(event_id, true);
         //end the timed event<br>
         manager.endTimedEvent(event_id);
-
+}}}
 = Integration =
 1)Build the project 
 2)Place the CN1Flurry.cn1lib file in your CN1 project lib. 
@@ -30,6 +31,8 @@ When you need to track events use:
 1)Include google play sefices - add android.includeGPlayServices=true build hint to your project.
 2)Include v4 support library - add android.supportV4=true build hint to your project.
 3)Disable proguard or mark relevant classes with the keep hints
+
+{{{
 
 android.enableProguard=false
  
@@ -65,4 +68,4 @@ class * implements android.os.Parcelable {
 public static final ** CREATOR;
 }
 
-
+}}}
