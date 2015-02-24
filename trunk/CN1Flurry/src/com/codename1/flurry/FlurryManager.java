@@ -9,11 +9,11 @@ import com.codename1.system.NativeLookup;
 
 /**
  * Utility class to use the Flurry API
- * 
+ *
  * @author Chen
  */
 public class FlurryManager {
-
+    
     private FlurryNative flurry = null;
 
     /**
@@ -24,24 +24,37 @@ public class FlurryManager {
     public FlurryManager() {
         flurry = (FlurryNative) NativeLookup.create(FlurryNative.class);
     }
-    
+
     /**
      * Init the flurry with the api key
-     * @param apiKey 
-     */ 
-    public void init(String apiKey){
+     *
+     * @param apiKey
+     */    
+    public void init(String apiKey) {
         if (flurry != null) {
             flurry.initFlurry(apiKey);
-        }    
+        }        
+    }
+    
+    public void startSession(){
+        if (flurry != null) {
+            flurry.startSession();
+        }            
+    }
+    
+    public void endSession(){
+        if (flurry != null) {
+            flurry.endSession();
+        }            
     }
 
     /**
      * Should be called before initFlurry
      */
-    public void setCrashReportingEnabled(boolean enable){
+    public void setCrashReportingEnabled(boolean enable) {
         flurry.setCrashReportingEnabled(enable);
     }
-    
+
     /**
      * Should be called before initFlurry
      */
@@ -84,4 +97,35 @@ public class FlurryManager {
         flurry.onPageView();
     }
 
+    /**
+     * Flurry Ads
+     */
+    
+    /**
+     * This should be called before init
+     */    
+    public void setAdSpaceName(String adSpace) {
+        flurry.setAdSpaceName(adSpace);
+    }
+
+    public boolean isAdReady() {
+        return flurry.isAdReady();
+    }
+    
+    public void fetchAd() {
+        flurry.fetchAd();
+    }
+
+    public void displayAd() {
+        flurry.displayAd();
+    }
+
+    public void destroyAd() {
+        flurry.destroyAd();
+    }
+    
+    public void setAdsListener(FlurryAdsListener l) {
+        Callback.setListener(l);
+    }
+    
 }

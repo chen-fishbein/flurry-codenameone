@@ -17,6 +17,16 @@ public interface FlurryNative extends NativeInterface{
      * call initFlurry to start a flurry session
      */ 
     public void initFlurry(String apiKey);
+    
+    /**
+     * start session
+     */ 
+    public void startSession();
+    
+    /**
+     * end session
+     */ 
+    public void endSession();
 
     /*Optional Features*/
     
@@ -69,5 +79,18 @@ public interface FlurryNative extends NativeInterface{
      * Valid inputs are m (male) or f (female)
      */ 
     public void setGender(String gender);
+    
+    /**
+     * Flurry Interstitial Ads
+     */ 
+    public void setAdSpaceName(String adSpace);
+
+    public void fetchAd();
+
+    public void displayAd();
+
+    public void destroyAd();
+
+    public boolean isAdReady();
     
 }

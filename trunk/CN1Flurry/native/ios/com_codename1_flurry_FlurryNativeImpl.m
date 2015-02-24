@@ -1,7 +1,11 @@
 #import "com_codename1_flurry_FlurryNativeImpl.h"
 #import "Flurry.h"
+#import "FlurryAdInterstitial.h"
+#import "FlurryAdInterstitialDelegate.h"
 
 @implementation com_codename1_flurry_FlurryNativeImpl
+
+FlurryAdInterstitial *adInterstitial = nil;
 
 -(void)onPageView{
     [Flurry logPageView];
@@ -16,7 +20,15 @@
 }
 
 -(void)initFlurry:(NSString*)param{
-    [Flurry startSession:param];
+    adID = param;
+}
+
+-(void)startSession{
+    [Flurry startSession:adID];
+}
+
+-(void)endSession{
+//ios handles this once the app goes to background
 }
 
 -(void)endTimedEvent:(NSString*)param{
@@ -28,7 +40,7 @@
 }
 
 -(void)setGender:(NSString*)param{
-    [Flurry setGender:param]?
+    [Flurry setGender:param];
 }
 
 -(void)setUserID:(NSString*)param{
@@ -36,8 +48,29 @@
 }
 
 -(void)setAge:(int)param{
-    [Flurry setAge:param]?
+    [Flurry setAge:param];
 }
+
+-(BOOL)isAdReady{
+    return [adInterstitial ready];
+}
+
+-(void)setAdSpaceName:(NSString*)param{
+    adInterstitial = [[FlurryAdInterstitial alloc]  initWithSpace:param];
+}
+
+-(void)fetchAd{
+    [adInterstitial fetchAd];
+}
+
+-(void)displayAd{
+    //[adInterstitial presentWithViewControler:<need the view>];
+}
+
+-(void)destroyAd{
+//no ios method in the API
+}
+
 
 -(BOOL)isSupported{
     return YES;

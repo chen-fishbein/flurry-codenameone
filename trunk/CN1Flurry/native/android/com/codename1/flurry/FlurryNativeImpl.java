@@ -1,11 +1,12 @@
 package com.codename1.flurry;
 
-import android.os.Bundle;
 import com.codename1.impl.android.AndroidNativeUtil;
-import com.codename1.impl.android.LifecycleListener;
 import com.flurry.android.*;
+import com.flurry.android.ads.*;
 
 public class FlurryNativeImpl {
+    FlurryAdInterstitial mFlurryAdInterstitial = null;
+    
     public void onPageView() {
         FlurryAgent.onPageView();
     }
@@ -21,29 +22,6 @@ public class FlurryNativeImpl {
 
     public void initFlurry(String apiKey) {
         FlurryAgent.init(AndroidNativeUtil.getActivity(), apiKey);
-        FlurryAgent.onStartSession(AndroidNativeUtil.getActivity());
-        com.codename1.impl.android.AndroidNativeUtil.addLifecycleListener(new LifecycleListener() {
-
-            public void onCreate(Bundle savedInstanceState) {
-            }
-
-            public void onResume() {
-            }
-
-            public void onPause() {
-            }
-
-            public void onDestroy() {
-                com.codename1.impl.android.AndroidNativeUtil.removeLifecycleListener(this);
-                FlurryAgent.onEndSession(AndroidNativeUtil.getActivity());
-            }
-
-            public void onSaveInstanceState(Bundle b) {
-            }
-
-            public void onLowMemory() {
-            }
-        });
     }
 
     public void endTimedEvent(String param) {
@@ -68,9 +46,80 @@ public class FlurryNativeImpl {
     }
 
     public void setUserID(String param) {
-        FlurryAgent.setUserID(param);
+        FlurryAgent.setUserId(param);
     }
 
+    
+    public void setAdSpaceName(String adSpace){    
+        mFlurryAdInterstitial = new FlurryAdInterstitial(AndroidNativeUtil.getActivity(), adSpace);
+        mFlurryAdInterstitial.setListener(new FlurryAdInterstitialListener() {
+
+            public void onFetched(FlurryAdInterstitial fai) {
+                Callback.onFetched();
+            }
+
+            public void onRendered(FlurryAdInterstitial fai) {
+                Callback.onRendered();
+            }
+
+            public void onDisplay(FlurryAdInterstitial fai) {
+                Callback.onDisplay();
+            }
+
+            public void onClose(FlurryAdInterstitial fai) {
+                Callback.onClose();
+            }
+
+            public void onAppExit(FlurryAdInterstitial fai) {
+                Callback.onAppExit();
+            }
+
+            public void onClicked(FlurryAdInterstitial fai) {
+                Callback.onClicked();
+            }
+
+            public void onVideoCompleted(FlurryAdInterstitial fai) {
+            }
+
+            public void onError(FlurryAdInterstitial fai, FlurryAdErrorType faet, int i) {
+                Callback.onError("err");
+            }
+        });
+    }
+    
+    public void destroyAd() {
+        if(mFlurryAdInterstitial != null){
+            mFlurryAdInterstitial.destroy();
+        }
+    }
+
+    public void displayAd() {
+        if(mFlurryAdInterstitial != null){
+            mFlurryAdInterstitial.displayAd();
+        }
+    }
+
+    public void fetchAd() {
+        if(mFlurryAdInterstitial != null){
+            mFlurryAdInterstitial.fetchAd();
+        }
+    }
+
+
+    public void startSession() {
+        FlurryAgent.onStartSession(AndroidNativeUtil.getActivity());
+    }
+
+    public void endSession() {
+        FlurryAgent.onEndSession(AndroidNativeUtil.getActivity());
+    }
+    
+    public boolean isAdReady() {
+        if(mFlurryAdInterstitial != null){
+            return mFlurryAdInterstitial.isReady();
+        }
+        return false;
+    }
     
     public boolean isSupported() {
         return true;

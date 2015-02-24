@@ -1,16 +1,24 @@
 #import <Foundation/Foundation.h>
 
 @interface com_codename1_flurry_FlurryNativeImpl : NSObject {
+    NSString *adID;
 }
 
 -(void)logEvent:(NSString*)param param1:(BOOL)param1;
--(void)initFlurry:(NSString*)param;
 -(void)setAge:(int)param;
--(void)onPageView;
--(void)setLogEvents:(BOOL)param;
--(void)setGender:(NSString*)param;
 -(void)setUserID:(NSString*)param;
--(void)setCrashReportingEnabled:(BOOL)param;
+-(void)endSession;
+-(void)initFlurry:(NSString*)param;
+-(BOOL)isAdReady;
+-(void)setLogEvents:(BOOL)param;
+-(void)displayAd;
+-(void)onPageView;
+-(void)setGender:(NSString*)param;
+-(void)destroyAd;
+-(void)fetchAd;
+-(void)startSession;
+-(void)setAdSpaceName:(NSString*)param;
 -(void)endTimedEvent:(NSString*)param;
+-(void)setCrashReportingEnabled:(BOOL)param;
 -(BOOL)isSupported;
 @end
