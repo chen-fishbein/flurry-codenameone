@@ -2,6 +2,7 @@
 #import "Flurry.h"
 #import "FlurryAdInterstitial.h"
 #import "FlurryAdInterstitialDelegate.h"
+#import "CodenameOne_GLViewController.h"
 
 @implementation com_codename1_flurry_FlurryNativeImpl
 
@@ -64,7 +65,7 @@ FlurryAdInterstitial *adInterstitial = nil;
 }
 
 -(void)displayAd{
-    //[adInterstitial presentWithViewControler:<need the view>];
+    [adInterstitial presentWithViewControler:[CodenameOne_GLViewController instance]];
 }
 
 -(void)destroyAd{
