@@ -6,6 +6,7 @@
 package com.codename1.flurry;
 
 import com.codename1.system.NativeLookup;
+import com.codename1.ui.Display;
 
 /**
  * Utility class to use the Flurry API
@@ -13,6 +14,11 @@ import com.codename1.system.NativeLookup;
  * @author Chen
  */
 public class FlurryManager {
+    
+    public static enum SDK {
+        ANDROID,
+        IPHONE
+    }
     
     private FlurryNative flurry = null;
 
@@ -34,6 +40,23 @@ public class FlurryManager {
         if (flurry != null) {
             flurry.initFlurry(apiKey);
         }        
+    }
+    
+    /**
+     * An initializer that takes into account the SDK that is in use.  This 
+     * allows init() to be called multiple times, and only the one for the
+     * current platform will be effectual.  This is required because
+     * the Android app will need a different API key than the IOS app.
+     * @param apiKey The unique flurry API key.
+     * @param sdk The SDK that this key corresponds to.
+     */
+    public void init(String apiKey, SDK sdk){
+        String platformName = Display.getInstance().getPlatformName();
+        if (sdk==SDK.ANDROID && "and".equals(platformName)){
+            init(apiKey);
+        } else if (sdk==SDK.IPHONE && "ios".equals(platformName)){
+            init(apiKey);
+        }
     }
     
     public void startSession(){
