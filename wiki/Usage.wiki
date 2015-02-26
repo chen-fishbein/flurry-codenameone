@@ -1,6 +1,6 @@
 = Usage =
 
-Sample code:
+== analytics ==
 {{{
         //init the Flurry Manager
         FlurryManager manager = new FlurryManager();
@@ -10,6 +10,8 @@ Sample code:
         }else{
             manager.init(ios_api_key);        
         }
+        manager.startSession();
+
 }}}
 
 When you need to track events use:
@@ -22,6 +24,41 @@ When you need to track events use:
         //end the timed event
         manager.endTimedEvent(event_id);
 }}}
+
+
+== Ads ==
+{{{
+        //init the Flurry Manager
+        FlurryManager manager = new FlurryManager();
+        manager.setCrashReportingEnabled(true);
+        if(Display.getInstance().getPlatformName().equals("and")){
+            manager.init(android_api_key);
+        }else{
+            manager.init(ios_api_key);        
+        }
+        manager.startSession();
+        manager.setAdSpaceName(<your-ad-space-name>);
+
+}}}
+
+When you want to display an Ad use the below utility methods:
+{{{
+	//fetch an Ad async and prepare it
+        manager.fetchAd();
+
+	//after fetch asks if the Ad is ready for display
+	manager.isAdReady();
+
+	//show the fetched Ad if ready
+	manager.displayAd();
+
+        //destory the Ad
+	manager.destroyAd();
+
+}}}
+
+
+
 = Integration =
 1)Build the project 
 2)Place the CN1Flurry.cn1lib file in your CN1 project lib. 
