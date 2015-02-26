@@ -125,7 +125,7 @@ public class FlurryManager {
      */
     
     /**
-     * This should be called before init
+     * This should be called before fetchAd or displayAd
      */    
     public void setAdSpaceName(String adSpace) {
         flurry.setAdSpaceName(adSpace);
