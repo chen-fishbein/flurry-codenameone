@@ -1,6 +1,7 @@
 #import <Foundation/Foundation.h>
+#import "FlurryAdInterstitialDelegate.h"
 
-@interface com_codename1_flurry_FlurryNativeImpl : NSObject {
+@interface com_codename1_flurry_FlurryNativeImpl : NSObject<FlurryAdInterstitialDelegate> {
     NSString *adID;
 }
 
