@@ -3,6 +3,7 @@
 #import "FlurryAdInterstitial.h"
 #import "FlurryAdInterstitialDelegate.h"
 #import "CodenameOne_GLViewController.h"
+#import "com_codename1_flurry_Callback.h"
 
 @implementation com_codename1_flurry_FlurryNativeImpl
 
@@ -26,7 +27,9 @@ FlurryAdInterstitial *adInterstitial = nil;
 }
 
 -(void)startSession{
-    [Flurry startSession:adID];
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        [Flurry startSession:adID];
+    });
 }
 
 -(void)endSession{
@@ -69,11 +72,20 @@ FlurryAdInterstitial *adInterstitial = nil;
 }
 
 -(void)fetchAd{
-    [adInterstitial fetchAd];
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        [adInterstitial fetchAd];
+    });
 }
 
 -(void)displayAd{
-    [adInterstitial presentWithViewControler:[CodenameOne_GLViewController instance]];
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        @try{
+            [adInterstitial presentWithViewController: [CodenameOne_GLViewController instance]];
+        } @catch (NSException *e){
+            //NSLog(@"Exception %@ %@", [e reason], [e callStackSymbols]);
+        }
+
+    });
 }
 
 -(void)destroyAd{
@@ -198,8 +210,6 @@ FlurryAdInterstitial *adInterstitial = nil;
  *
  */
 - (void) adInterstitial:(FlurryAdInterstitial*) interstitialAd adError:(FlurryAdError) adError errorDescription:(NSError*) errorDescription{
-    NSLog(@"Error with interstitial ad: %@", errorDescription.localizedDescription);
-
     com_codename1_flurry_Callback_onError___java_lang_String(CN1_THREAD_GET_STATE_PASS_ARG fromNSString(CN1_THREAD_GET_STATE_PASS_ARG [errorDescription localizedDescription]));
 }
 
