@@ -60,15 +60,15 @@ When you want to display an Ad use the below utility methods:
 
 
 = Integration =
-1)Build the project 
-2)Place the CN1Flurry.cn1lib file in your CN1 project lib. 
-3)Right click on your CN1 project and select "Refresh Libs" then clean build your project.
+1)Build the project <br>
+2)Place the CN1Flurry.cn1lib file in your CN1 project lib. <br>
+3)Right click on your CN1 project and select "Refresh Libs" then clean build your project.<br>
 
 = Android =
-1)Include google play sefices - add android.includeGPlayServices=true build hint to your project.
-2)Include v4 support library - add android.supportV4=true build hint to your project.
+1)Include google play sefices - add android.includeGPlayServices=true build hint to your project.<br>
+2)Include v4 support library - add android.supportV4=true build hint to your project.<br>
 3)Disable proguard or mark relevant classes with the keep hints
-
+<br>
 {{{
 
 android.enableProguard=false
