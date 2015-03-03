@@ -121,6 +121,28 @@ public class FlurryManager {
     }
 
     /**
+     * Use this to log the user's assigned ID or username in your system. This should be called before ini
+     */ 
+    public void setUserID(String name){
+        flurry.setUserID(name);
+    }
+    
+    /**
+     * Use this to log the user's age after identifying the user. Valid inputs are 0 or greater.
+     */ 
+    public void setAge(int age){
+        flurry.setAge(age);
+    }
+    
+    /**
+     * Use this to log the user's gender after identifying the user. 
+     * Valid inputs are m (male) or f (female)
+     */ 
+    public void setGender(String gender){
+        flurry.setGender(gender);    
+    }
+    
+    /**
      * Flurry Ads
      */
     
