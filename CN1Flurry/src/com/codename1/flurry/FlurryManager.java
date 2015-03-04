@@ -15,6 +15,8 @@ import com.codename1.ui.Display;
  */
 public class FlurryManager {
     
+    private String adSpace;
+    
     public static enum SDK {
         ANDROID,
         IPHONE
@@ -59,12 +61,21 @@ public class FlurryManager {
         }
     }
     
+    /**
+     * Start Session
+     */ 
     public void startSession(){
         if (flurry != null) {
             flurry.startSession();
+            if(adSpace != null){
+                flurry.setAdSpaceName(adSpace);            
+            }
         }            
     }
     
+    /**
+     * End Session
+     */ 
     public void endSession(){
         if (flurry != null) {
             flurry.endSession();
@@ -147,10 +158,14 @@ public class FlurryManager {
      */
     
     /**
-     * This should be called before fetchAd or displayAd
+     * This should be called before startSession
      */    
     public void setAdSpaceName(String adSpace) {
-        flurry.setAdSpaceName(adSpace);
+        if(Display.getInstance().getPlatformName().equals("ios")){
+            this.adSpace = adSpace;
+        }else{
+            flurry.setAdSpaceName(adSpace);
+        }
     }
 
     public boolean isAdReady() {
