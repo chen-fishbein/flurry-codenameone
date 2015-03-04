@@ -36,8 +36,8 @@ When you need to track events use:
         }else{
             manager.init(ios_api_key);        
         }
-        manager.startSession();
         manager.setAdSpaceName(<your-ad-space-name>);
+        manager.startSession();
 
 }}}
 
