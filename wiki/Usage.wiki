@@ -65,9 +65,20 @@ When you want to display an Ad use the below utility methods:
 3)Right click on your CN1 project and select "Refresh Libs" then clean build your project.<br>
 
 = Android =
-1)Include google play sefices - add android.includeGPlayServices=true build hint to your project.<br>
-2)Include v4 support library - add android.supportV4=true build hint to your project.<br>
-3)Add the flurry activity to your manifest - add<br> android.xapplication=<activity android:name="com.flurry.android.FlurryFullscreenTakeoverActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"> </activity>
+1)Include google play sefices - add 
+{{{
+android.includeGPlayServices=true
+}}}
+ build hint to your project.<br>
+2)Include v4 support library - add 
+{{{
+android.supportV4=true
+}}}
+ build hint to your project.<br>
+3)Add the flurry activity to your manifest - add<br> 
+{{{
+android.xapplication=<activity android:name="com.flurry.android.FlurryFullscreenTakeoverActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"> </activity>
+}}}
 <br>
 build hint to your project
 <br>
