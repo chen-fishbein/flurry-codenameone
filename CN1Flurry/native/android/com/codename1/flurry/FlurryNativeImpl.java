@@ -5,7 +5,10 @@ import com.flurry.android.*;
 import com.flurry.android.ads.*;
 
 public class FlurryNativeImpl {
-    FlurryAdInterstitial mFlurryAdInterstitial = null;
+    
+    private FlurryAdInterstitial mFlurryAdInterstitial = null;
+    
+    private String adSpace;
     
     public void onPageView() {
         FlurryAgent.onPageView();
@@ -51,6 +54,7 @@ public class FlurryNativeImpl {
 
     
     public void setAdSpaceName(String adSpace){    
+        this.adSpace = adSpace;
         mFlurryAdInterstitial = new FlurryAdInterstitial(AndroidNativeUtil.getActivity(), adSpace);
         mFlurryAdInterstitial.setListener(new FlurryAdInterstitialListener() {
 
@@ -64,6 +68,7 @@ public class FlurryNativeImpl {
 
             public void onDisplay(FlurryAdInterstitial fai) {
                 Callback.onDisplay();
+                mFlurryAdInterstitial = null;
             }
 
             public void onClose(FlurryAdInterstitial fai) {
@@ -102,6 +107,11 @@ public class FlurryNativeImpl {
     public void fetchAd() {
         if(mFlurryAdInterstitial != null){
             mFlurryAdInterstitial.fetchAd();
+        }else{
+            if(adSpace != null){
+                setAdSpaceName(adSpace);
+                fetchAd();
+            }
         }
     }
 
