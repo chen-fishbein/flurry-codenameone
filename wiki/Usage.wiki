@@ -65,7 +65,7 @@ When you want to display an Ad use the below utility methods:
 3)Right click on your CN1 project and select "Refresh Libs" then clean build your project.<br>
 
 = Android =
-1)Include google play sefices - add 
+1)Include google play services - add 
 {{{
 android.includeGPlayServices=true
 }}}
