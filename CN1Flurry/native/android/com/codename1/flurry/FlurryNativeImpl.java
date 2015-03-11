@@ -84,6 +84,7 @@ public class FlurryNativeImpl {
             }
 
             public void onVideoCompleted(FlurryAdInterstitial fai) {
+                Callback.onVideoCompleted();
             }
 
             public void onError(FlurryAdInterstitial fai, FlurryAdErrorType faet, int i) {

@@ -92,6 +92,17 @@ public class Callback {
         }                        
     }
     
+    public static void onVideoCompleted(){
+        if(l != null){
+            Display.getInstance().callSerially(new Runnable(){
+
+                public void run() {
+                    l.onVideoCompleted();
+                }
+            });
+        }                        
+    }
+
     static void setListener(FlurryAdsListener listener){
         l = listener;
     }
