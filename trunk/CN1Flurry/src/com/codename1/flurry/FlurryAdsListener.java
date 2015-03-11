@@ -24,4 +24,6 @@ public interface FlurryAdsListener {
     public void onError(String err);
 
     public void onFetched();
+    
+    public void onVideoCompleted();
 }

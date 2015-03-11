@@ -196,7 +196,9 @@ FlurryAdInterstitial *adInterstitial = nil;
  *  @param interstitialAd The interstitial ad object that played the video and finished playing the video.
  *
  */
-- (void) adInterstitialVideoDidFinish:(FlurryAdInterstitial*)interstitialAd{}
+- (void) adInterstitialVideoDidFinish:(FlurryAdInterstitial*)interstitialAd{
+    com_codename1_flurry_Callback_onVideoCompleted__(CN1_THREAD_GET_STATE_PASS_SINGLE_ARG);
+}
 
 /*!
  *  @brief Informational callback invoked when there is an ad error
