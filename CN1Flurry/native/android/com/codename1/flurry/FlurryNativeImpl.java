@@ -68,11 +68,11 @@ public class FlurryNativeImpl {
 
             public void onDisplay(FlurryAdInterstitial fai) {
                 Callback.onDisplay();
-                mFlurryAdInterstitial = null;
             }
 
             public void onClose(FlurryAdInterstitial fai) {
                 Callback.onClose();
+                mFlurryAdInterstitial = null;
             }
 
             public void onAppExit(FlurryAdInterstitial fai) {
@@ -85,6 +85,7 @@ public class FlurryNativeImpl {
 
             public void onVideoCompleted(FlurryAdInterstitial fai) {
                 Callback.onVideoCompleted();
+                mFlurryAdInterstitial = null;
             }
 
             public void onError(FlurryAdInterstitial fai, FlurryAdErrorType faet, int i) {
