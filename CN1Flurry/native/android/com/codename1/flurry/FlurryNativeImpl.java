@@ -89,7 +89,7 @@ public class FlurryNativeImpl {
             }
 
             public void onError(FlurryAdInterstitial fai, FlurryAdErrorType faet, int i) {
-                Callback.onError("err");
+                Callback.onError("Error Type == " + faet + " code == " + i);
             }
         });
     }
