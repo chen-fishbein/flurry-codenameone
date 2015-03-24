@@ -62,9 +62,9 @@ The library is implemented for Android and iOS.
 1)Include google play services - add android.includeGPlayServices=true
 build hint to your project.<br/>
 2)Include v4 support library - add android.supportV4=true build hint to your project.<br/>
-3)Add the flurry activity to your manifest - add
-android.xapplication=<activity android:name="com.flurry.android.FlurryFullscreenTakeoverActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"> </activity>
-build hint to your project <br/>
+3)Add the flurry activity to your manifest - add<br/>
+android.xapplication=\<activity android:name="com.flurry.android.FlurryFullscreenTakeoverActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"> \</activity>
+<br/>build hint to your project <br/>
 4)Disable proguard or mark relevant classes with the keep hints android.enableProguard=false <br/>
  
 or 
