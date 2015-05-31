@@ -86,14 +86,18 @@ public class FlurryManager {
      * Should be called before initFlurry
      */
     public void setCrashReportingEnabled(boolean enable) {
-        flurry.setCrashReportingEnabled(enable);
+        if (flurry != null) {
+            flurry.setCrashReportingEnabled(enable);
+        }
     }
 
     /**
      * Should be called before initFlurry
      */
     public void setLogEvents(boolean enable) {
-        flurry.setLogEvents(enable);
+        if (flurry != null) {
+            flurry.setLogEvents(enable);
+        }
     }
 
     /**
@@ -102,7 +106,9 @@ public class FlurryManager {
      * @param eventId event id
      */
     public void logEvent(String eventId) {
-        flurry.logEvent(eventId, false);
+        if (flurry != null) {
+            flurry.logEvent(eventId, false);
+        }
     }
 
     /**
@@ -112,7 +118,9 @@ public class FlurryManager {
      * @param timed if timed true call endTimedEvent once the event ended
      */
     public void logEvent(String eventId, boolean timed) {
-        flurry.logEvent(eventId, timed);
+        if (flurry != null) {
+            flurry.logEvent(eventId, timed);
+        }
     }
 
     /**
@@ -121,28 +129,36 @@ public class FlurryManager {
      * @param eventId event id
      */
     public void endTimedEvent(String eventId) {
-        flurry.endTimedEvent(eventId);
+        if (flurry != null) {
+            flurry.endTimedEvent(eventId);
+        }
     }
 
     /**
      * Use onPageView to report page view count
      */
     public void onPageView() {
-        flurry.onPageView();
+        if (flurry != null) {
+            flurry.onPageView();
+        }
     }
 
     /**
      * Use this to log the user's assigned ID or username in your system. This should be called before ini
      */ 
     public void setUserID(String name){
-        flurry.setUserID(name);
+        if (flurry != null) {
+            flurry.setUserID(name);
+        }
     }
     
     /**
      * Use this to log the user's age after identifying the user. Valid inputs are 0 or greater.
      */ 
     public void setAge(int age){
-        flurry.setAge(age);
+        if (flurry != null) {
+            flurry.setAge(age);
+        }
     }
     
     /**
@@ -150,7 +166,9 @@ public class FlurryManager {
      * Valid inputs are m (male) or f (female)
      */ 
     public void setGender(String gender){
-        flurry.setGender(gender);    
+        if (flurry != null) {
+            flurry.setGender(gender);    
+        }
     }
     
     /**
@@ -164,24 +182,36 @@ public class FlurryManager {
         if(Display.getInstance().getPlatformName().equals("ios")){
             this.adSpace = adSpace;
         }else{
-            flurry.setAdSpaceName(adSpace);
+            if (flurry != null) {
+                flurry.setAdSpaceName(adSpace);
+            }
         }
     }
 
     public boolean isAdReady() {
-        return flurry.isAdReady();
+        if (flurry != null) {
+            return flurry.isAdReady();
+        }else{
+            return false;
+        }
     }
     
     public void fetchAd() {
-        flurry.fetchAd();
+        if (flurry != null) {
+            flurry.fetchAd();
+        }
     }
 
     public void displayAd() {
-        flurry.displayAd();
+        if (flurry != null) {
+            flurry.displayAd();
+        }
     }
 
     public void destroyAd() {
-        flurry.destroyAd();
+        if (flurry != null) {
+            flurry.destroyAd();
+        }
     }
     
     public void setAdsListener(FlurryAdsListener l) {
