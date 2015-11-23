@@ -100,5 +100,5 @@ public static final ** CREATOR;
 }
 
 ##iOS<br/>
-1)Add ios.add_libs=SystemConfiguration.framework;Security.framework
+1)Add ios.add_libs=SystemConfiguration.framework;Security.framework;AdSupport.framework
 build hint to your project
