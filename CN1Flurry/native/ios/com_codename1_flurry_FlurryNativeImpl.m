@@ -23,7 +23,7 @@ FlurryAdInterstitial *adInterstitial = nil;
 
 -(void)initFlurry:(NSString*)param{
     adID = param;
-    
+
 }
 
 -(void)startSession{
@@ -37,7 +37,7 @@ FlurryAdInterstitial *adInterstitial = nil;
 }
 
 -(void)endTimedEvent:(NSString*)param{
-    [Flurry endTimedEvent:param withParameters:nil]; 
+    [Flurry endTimedEvent:param withParameters:nil];
 }
 
 -(void)logEvent:(NSString*)param param1:(BOOL)param1{
